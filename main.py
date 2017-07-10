@@ -11,7 +11,7 @@ os.system("cls")
 
 def result():
     
-    url = 'https://dgb-groestl.theblocksfactory.com/api.php?api_key='
+    url = 'https://dgb-'+useralgo+'.theblocksfactory.com/api.php?api_key='
     r = requests.get(url+apikey)
 
     data = r.json()
@@ -47,8 +47,10 @@ def printstats():
 
 print(" please insert your api key from https://dgb-groestl.theblocksfactory.com/accountdetails \n" + "APIKEY:")
 apikey = input()
-
+print("algorithm? example skein, groestl, qubit   etc...")
+algo = input()
 if len(apikey) == 64:
+    useralgo = algo
     userkey = apikey
     os.system("cls")
 else:
