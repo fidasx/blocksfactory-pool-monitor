@@ -1,5 +1,7 @@
 # blocksfactory-cli-monitor
 
+### a simple mining pool monitor made as a coding exercice in python
+
 [get python 3.5+](https://www.python.org/)
 
 ![Image](https://github.com/fidasx/blocksfactory-pool-monitor/blob/master/preview1.PNG?raw=true)
