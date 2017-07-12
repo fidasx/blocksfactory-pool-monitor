@@ -10,9 +10,10 @@ os.system("cls")
 
 
 def result():
-    
-    url = 'https://dgb-'+userinput.algo+'.theblocksfactory.com/api.php?api_key='
-    r = requests.get(url+userinput.key)
+    data=None
+
+    url = 'https://dgb-'+userinput.algo+'.theblocksfactory.com/api.php?api_key='+userinput.key
+    r = requests.get(url)
 
     data = r.json()
     #time.sleep(0.1)
@@ -20,8 +21,14 @@ def result():
     red("---------------------------------------WORKERS-----------------------------------------------")
 
     for key, val in data["workers"].items():
+        
         timestamp = datetime.fromtimestamp(int(val["last_share_timestamp"])).strftime('%Y-%m-%d %H:%M:%S')
         result.worker = print(key.upper() + " |HASHRATE| " + colored(float(val["hashrate"])/1000, "green") +" |LAST SHARE| "+ colored(timestamp, 'green'))
+        if timestamp in val["last_share_timestamp"]:
+                timestamp = timestamp
+        else:
+            timestamp = 00000000            
+            
 
     result.username = "USER: " + colored(data["username"], "green")
     result.confirmed = "CONFIRMED: " + colored(round(float(data["confirmed_rewards"])), "green")
@@ -82,7 +89,7 @@ def update():
     while True:
         result()
         printstats()
-        time.sleep(15)
+        time.sleep(30)
         os.system("cls")
 
 update()
