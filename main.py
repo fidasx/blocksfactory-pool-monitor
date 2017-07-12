@@ -23,11 +23,7 @@ def result():
     for key, val in data["workers"].items():
         
         timestamp = datetime.fromtimestamp(int(val["last_share_timestamp"])).strftime('%Y-%m-%d %H:%M:%S')
-        result.worker = print(key.upper() + " |HASHRATE| " + colored(float(val["hashrate"])/1000, "green") +" |LAST SHARE| "+ colored(timestamp, 'green'))
-        if timestamp in val["last_share_timestamp"]:
-                timestamp = timestamp
-        else:
-            timestamp = 00000000            
+        result.worker = print(key.upper() + " |HASHRATE| " + colored(float(val["hashrate"])/1000, "green") +" |LAST SHARE| "+ colored(timestamp, 'green'))           
             
 
     result.username = "USER: " + colored(data["username"], "green")
